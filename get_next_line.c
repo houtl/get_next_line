@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:35:33 by thou              #+#    #+#             */
-/*   Updated: 2017/01/11 16:22:19 by thou             ###   ########.fr       */
+/*   Updated: 2017/01/11 17:20:16 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int				get_next_line(const int fd, char **line)
 	int				ret;
 	char			*mem;
 
-	if (fd < 0 || line == NULL || read(fd, buff, 0) < 0)
-		return (-1);
+	SAFEMALLOC(!(fd < 0 || line == NULL || read(fd, buff, 0) < 0));
 	file = rightfile(&tmp, fd);
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
@@ -52,7 +51,8 @@ int				get_next_line(const int fd, char **line)
 		return (0);
 	SAFEMALLOC((*line = ft_strsubc(file->content, '\n')));
 	mem = file->content;
-	file->content = ft_strdup(file->content + (ft_strlen(*line) + 1));
+	file->content = (ft_strlen(*line) < ft_strlen(file->content) ?
+			ft_strdup(file->content + ft_strlen(*line) + 1) : ft_strnew('\0'));
 	free(mem);
 	return (1);
 }
