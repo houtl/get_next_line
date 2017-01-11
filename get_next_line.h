@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:36:59 by thou              #+#    #+#             */
-/*   Updated: 2016/12/16 16:37:09 by thou             ###   ########.fr       */
+/*   Updated: 2017/01/11 16:15:33 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # define BUFF_SIZE 42
 
-# include "libft.h"
+# include "libft/includes/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+
+# define SAFEMALLOC(x) if (!x) return (-1);
 
 int					get_next_line(int const fd, char **line);
 
