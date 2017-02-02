@@ -6,37 +6,41 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/31 14:24:46 by thou              #+#    #+#             */
-/*   Updated: 2017/01/03 14:56:27 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/02 16:20:25 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
 	int		fd;
 	int		fd1;
 	char	*line;
+	int		i;
+	int		j;
 
 	if (ac == 1)
 		return (0);
 	fd = open(av[1], O_RDONLY);
 	fd1 = open(av[2], O_RDONLY);
-	while (get_next_line(fd, &line) == 1)
+	while ((i = get_next_line(fd, &line)) == 1)
 	{
-		ft_putstr(line);
-		ft_putchar('\n');
-		if (get_next_line(fd1, &line) == 1)
+		printf("fd = %d:	%s\n", i, line);
+		free(line);
+		if ((j = get_next_line(fd1, &line)) == 1)
 		{
-			ft_putstr(line);
-			ft_putchar('\n');
+			printf("fd1 = %d:    %s\n", j, line);
+			free(line);
 		}
 	}
-	while (get_next_line(fd, &line) == 1)
+	while ((j = get_next_line(fd1, &line)) == 1)
 	{
-		ft_putstr(line);
-		ft_putchar('\n');
+		printf("fd1 = %d:    %s\n", j, line);
 	}
+	printf("fd = %d:    %s\n", i, line);
+	printf("fd1 = %d:    %s\n", j, line);
 	return (0);
 }
