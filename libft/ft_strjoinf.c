@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoinf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/16 16:36:59 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 16:06:04 by thou             ###   ########.fr       */
+/*   Created: 2017/02/02 15:54:17 by thou              #+#    #+#             */
+/*   Updated: 2017/02/02 16:03:59 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 10000000
+char	*ft_strjoinf(char const *s1, char const *s2)
+{
+	char	*a;
+	char	*dst;
 
-# include "libft/includes/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-# define SAFEMALLOC(x) if (!x) return (-1);
-
-int					get_next_line(int const fd, char **line);
-
-#endif
+	a = (char*)s1;
+	dst = ft_strjoin(s1, s2);
+	free(a);
+	return (dst);
+}

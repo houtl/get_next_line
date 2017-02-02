@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:35:33 by thou              #+#    #+#             */
-/*   Updated: 2017/01/11 17:20:16 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/02 15:58:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,26 @@ static t_list	*rightfile(t_list **file, int fd)
 
 int				get_next_line(const int fd, char **line)
 {
-	char			buff[BUFF_SIZE + 1];
+	char			*buff;
 	static t_list	*tmp = NULL;
 	t_list			*file;
 	int				ret;
 	char			*mem;
 
+	SAFEMALLOC((buff = (char*)malloc(sizeof(char) * (BUFF_SIZE + 1))));
 	SAFEMALLOC(!(fd < 0 || line == NULL || read(fd, buff, 0) < 0));
 	file = rightfile(&tmp, fd);
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[ret] = '\0';
-		mem = file->content;
-		SAFEMALLOC((file->content = ft_strjoin(file->content, buff)));
-		free(mem);
+		SAFEMALLOC((file->content = ft_strjoinf(file->content, buff)));
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}
-	if (ret < BUFF_SIZE && !ft_strlen(file->content))
-		return (0);
+	free(buff);
 	SAFEMALLOC((*line = ft_strsubc(file->content, '\n')));
+	if (!(ft_strlen(file->content)))
+		return (0);
 	mem = file->content;
 	file->content = (ft_strlen(*line) < ft_strlen(file->content) ?
 			ft_strdup(file->content + ft_strlen(*line) + 1) : ft_strnew('\0'));
