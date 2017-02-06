@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/31 14:24:46 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 16:20:25 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/06 15:29:38 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ int	main(int ac, char **av)
 	while ((j = get_next_line(fd1, &line)) == 1)
 	{
 		printf("fd1 = %d:    %s\n", j, line);
+		free(line);
 	}
 	printf("fd = %d:    %s\n", i, line);
 	printf("fd1 = %d:    %s\n", j, line);
+	free(line);
 	return (0);
 }

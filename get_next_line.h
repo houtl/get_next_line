@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:36:59 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 16:06:04 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/06 15:40:12 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 
 # define SAFEMALLOC(x) if (!x) return (-1);
+# define FIN(x) if (!x) return (0);
 
 int					get_next_line(int const fd, char **line);
 

@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:35:33 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 15:58:41 by thou             ###   ########.fr       */
+/*   Updated: 2017/02/06 15:39:30 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int				get_next_line(const int fd, char **line)
 			break ;
 	}
 	free(buff);
+	*line = NULL;
+	FIN(ft_strlen(file->content));
 	SAFEMALLOC((*line = ft_strsubc(file->content, '\n')));
-	if (!(ft_strlen(file->content)))
-		return (0);
 	mem = file->content;
 	file->content = (ft_strlen(*line) < ft_strlen(file->content) ?
 			ft_strdup(file->content + ft_strlen(*line) + 1) : ft_strnew('\0'));
