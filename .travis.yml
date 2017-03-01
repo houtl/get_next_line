@@ -5,6 +5,8 @@ script:
     - clang -Wall -Wextra -Werror -I libft/includes -o main.o -c main.c
     - clang -o test_gnl main.o get_next_line.o -I libft/includes -L libft/ -lft
     - ./test_gnl get_next_line.c get_next_line.h
+env:
+    - ARCH=x86_64
 os:
     - osx
     - linux
