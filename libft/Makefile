@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 17:40:06 by thou              #+#    #+#              #
-#    Updated: 2017/03/01 15:06:32 by thou             ###   ########.fr        #
+#    Updated: 2017/03/01 16:29:31 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ AUTRES					=	ft_clamp.c ft_isupper.c ft_strjoinchar.c ft_strsubc.c ft_islower.c 
 SRC_BASE				=	$(addprefix $(LIBC_DIR), $(LIBC))\
 							$(addprefix $(SUPPLEMENTAIRE_DIR), $(SUPPLEMENTAIRE))\
 							$(addprefix $(BONUS_DIR), $(BONUS))\
-							$(addprefix $(AUTRES_DIR), $(AUTRES))\
+							$(addprefix $(AUTRES_DIR), $(AUTRES))
 SRCS					=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS					=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB						=	$(words $(SRC_BASE))
