@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 17:40:06 by thou              #+#    #+#              #
-#    Updated: 2017/03/01 16:29:31 by thou             ###   ########.fr        #
+#    Updated: 2017/03/01 17:27:55 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$((89-$(PERCENT)/16))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\e[38;5;11m⌛ MAKE	$(NAME): \e[48;5;$(COLOR)m%*s\e[45;1m%*s$(RESET)$(YELLOW) %2d%% $(RESET) \e[38;5;11m %*s$(RESET)" $(DONE) "" $(TO_DO) "" $(PERCENT) $(DELTA) "$@"
+	@printf "\r\033[38;5;11m⌛ MAKE	$(NAME): \033[48;5;$(COLOR)m%*s\033[45;1m%*s$(RESET)$(YELLOW) %2d%% $(RESET) \033[38;5;11m %*s$(RESET)" $(DONE) "" $(TO_DO) "" $(PERCENT) $(DELTA) "$@"
 	@mkdir -p $(dir $@)
 	@gcc $(FLAG) -c $< -o $@
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
