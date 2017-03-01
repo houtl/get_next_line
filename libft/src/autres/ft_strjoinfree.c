@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 15:20:00 by thou              #+#    #+#             */
-/*   Updated: 2017/03/01 15:01:08 by thou             ###   ########.fr       */
+/*   Created: 2017/02/02 15:54:17 by thou              #+#    #+#             */
+/*   Updated: 2017/02/02 16:03:59 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strjoinfree(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*c;
+	char	*a;
+	char	*dst;
 
-	i = ft_strlen(s1) + 1;
-	c = (char*)malloc(sizeof(char) * i);
-	if (c == NULL)
-		return (NULL);
-	return ((char*)ft_memcpy(c, s1, i));
+	a = (char*)s1;
+	dst = ft_strjoin(s1, s2);
+	free(a);
+	return (dst);
 }

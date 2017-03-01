@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:22:36 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 16:02:55 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/01 15:07:15 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-char			*ft_strjoinf(char const *s1, char const *s2);
-char			*ft_strjoinch(char const *s1, char c);
+char			*ft_strjoinfree(char const *s1, char const *s2);
+char			*ft_strjoinchar(char const *s1, char c);
 char			*ft_strsubc(char *src, char c);
 double			ft_clamp(double x, double min, double max);
 int				ft_islower(int c);

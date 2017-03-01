@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinf.c                                      :+:      :+:    :+:   */
+/*   ft_strjoinchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/02 15:54:17 by thou              #+#    #+#             */
-/*   Updated: 2017/02/02 16:03:59 by thou             ###   ########.fr       */
+/*   Created: 2016/12/15 17:05:37 by thou              #+#    #+#             */
+/*   Updated: 2016/12/15 17:21:10 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinf(char const *s1, char const *s2)
+char	*ft_strjoinchar(char const *s1, char c)
 {
-	char	*a;
 	char	*dst;
+	size_t	i;
+	size_t	len;
 
-	a = (char*)s1;
-	dst = ft_strjoin(s1, s2);
-	free(a);
+	if (!s1 || !c)
+		return (NULL);
+	len = ft_strlen(s1);
+	dst = ft_strnew(len + 2);
+	if (!dst)
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		*(dst + i) = *(s1 + i);
+	*(dst + i) = c;
+	*(dst + i + 1) = 0;
 	return (dst);
 }
