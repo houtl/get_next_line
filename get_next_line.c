@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 16:35:33 by thou              #+#    #+#             */
-/*   Updated: 2017/02/06 17:35:48 by thou             ###   ########.fr       */
+/*   Updated: 2017/03/01 16:35:03 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				get_next_line(const int fd, char **line)
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[ret] = '\0';
-		SAFEMALLOC((file->content = ft_strjoinf(file->content, buff)));
+		SAFEMALLOC((file->content = ft_strjoinfree(file->content, buff)));
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}
