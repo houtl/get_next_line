@@ -73,7 +73,7 @@ SRCS					=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS					=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB						=	$(words $(SRC_BASE))
 INDEX					=	1	
-DELTA					=   $$(echo "$$(tput cols)-48"|bc)
+DELTA					=	$$(expr $$(tput cols) - 48)
 
 all: $(NAME)
 
