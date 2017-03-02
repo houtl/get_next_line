@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/03 17:40:06 by thou              #+#    #+#              #
-#    Updated: 2017/03/01 17:27:55 by thou             ###   ########.fr        #
+#    Updated: 2017/03/02 16:20:19 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\033[100D✅ \033[40C\033[K\c"
+	@echo "\033[$$(tput cols)D✅ \033[40C\033[K\c"
 	@echo "\n\033[48;5;15;38;5;25;1mMAKE $(NAME) DONE$(RESET)"
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
